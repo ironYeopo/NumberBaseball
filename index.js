@@ -16,11 +16,12 @@ function ran(array) {
 }
 //console.log(ran(comArray));
 
-document.getElementById('num').addEventListener('keydown', compare());
-let input = document.getElementById('num').value;
+//document.getElementById('num').addEventListener('keydown', compare());
+
 
 function compare() {    
-  if(window.keyCode === 13) {
+  if(event.keyCode === 13) {
+    let input = document.getElementById('num').value
     if(input.length !== 3) alert('input 3 numbers');  
     else {
       let strike = 0;
@@ -31,7 +32,7 @@ function compare() {
           else if(i != j && comArray[i] == input[j]) ++ball;
         }       
       }
-      return console.log([strike, ball]);
+      return alert(`${strike}srike ${ball}ball`);
     }
   }
 }
