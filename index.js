@@ -16,19 +16,19 @@ function ran(array) {
 }
 //console.log(ran(comArray));
 
-let input = document.getElementById('num').addEventListener('keydown', compare());
-let inputVal = document.getElementById('num').value;
+document.getElementById('num').addEventListener('keydown', compare());
+let input = document.getElementById('num').value;
 
 function compare() {    
-  if(d.keyCode === 13) {
-    if(inputVal.length !== 3) alert('input 3 numbers');  
+  if(window.keyCode === 13) {
+    if(input.length !== 3) alert('input 3 numbers');  
     else {
       let strike = 0;
       let ball = 0;
       for(let i = 0; i < comArray.length; i++) {
-        for(let j = 0; j < inputVal.length; j++) {
-          if(i == j && comArray[i] == inputVal[j]) ++strike;
-          else if(i != j && comArray[i] == inputVal[j]) ++ball;
+        for(let j = 0; j < input.length; j++) {
+          if(i == j && comArray[i] == input[j]) ++strike;
+          else if(i != j && comArray[i] == input[j]) ++ball;
         }       
       }
       return console.log([strike, ball]);

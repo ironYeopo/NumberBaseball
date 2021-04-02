@@ -27,11 +27,28 @@
       
       <input type='button' id='button' onclick='randomN()' value='Game Start'></input>
       
-      <input type='text' id='num' size='13' placeholder='Input 3 numbers'></input>
+      <input type='text' id='num' size='13' onkeydown='compare(event)' placeholder='Input 3 numbers'></input>
       
       <!--<input type='button' id='button' name='Retry' onclick='?' value='Retry'></input>-->
       <!-- 야구게임 End -->
     </section>
-    <script src="index.js"></script>
+    <script src="index.js">
+      function compare(event) {    
+        if(event.keyCode === 13) {
+          if(document.getElementById.value.length !== 3) alert('input 3 numbers');  
+          else {
+            let strike = 0;
+            let ball = 0;
+            for(let i = 0; i < comArray.length; i++) {
+              for(let j = 0; j < inputVal.length; j++) {
+                if(i == j && comArray[i] == inputVal[j]) ++strike;
+                else if(i != j && comArray[i] == inputVal[j]) ++ball;
+              }       
+            }
+            return alert([strike, ball]);
+          }
+        }
+    }
+    </script>
   </body>
 </html>
