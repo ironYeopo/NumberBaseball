@@ -3,36 +3,69 @@ let comArray = [];
 
 function randomN() {
   while(comArray.length !== 3) {
-   comArray.push(Math.floor(Math.random() * 10));
+    comArray.push(Math.floor(Math.random() * 10));
   }
-  return comArray;
+  // 버튼 체인
+  let num  = document.getElementById('num');
+  if(num.style.display === 'none') {
+    num.style.display = 'block';
+  } else {
+    num.style.display = 'none';
+  }
 }
 
 // 게임시작 버튼을 눌렀을 때 랜덤한 수 생성 v2
 function ran(array) {
-  if(array.length === 3) return array;
+  if(array.length >= 3) return array;
   array.push(Math.floor(Math.random() * 10));
   return ran(array);
 }
-//console.log(ran(comArray));
+// console.log(ran(comArray));
 
-//document.getElementById('num').addEventListener('keydown', compare());
+document.getElementById('num').addEventListener('keydown', compare);
+// 10번의 시도 제한을 두기 위한 변수 count
+let count = 0;
 
-
-function compare() {    
+function compare(event) {    
   if(event.keyCode === 13) {
-    let input = document.getElementById('num').value
-    if(input.length !== 3) alert('input 3 numbers');  
-    else {
-      let strike = 0;
-      let ball = 0;
-      for(let i = 0; i < comArray.length; i++) {
-        for(let j = 0; j < input.length; j++) {
-          if(i == j && comArray[i] == input[j]) ++strike;
-          else if(i != j && comArray[i] == input[j]) ++ball;
-        }       
+    if(count < 10) {
+      let num = document.getElementById('num');
+      // num.style.display = 'none';
+      let input = num.value;
+      if(input.length !== 3) alert('input 3 numbers');  
+      else {
+        let strike = 0;
+        let ball = 0;
+        for(let i = 0; i < comArray.length; i++) {
+          for(let j = 0; j < input.length; j++) {
+            if(i == j && comArray[i] == input[j]) ++strike;
+            else if(i != j && comArray[i] == input[j]) ++ball;
+          }       
+        }
+        count++;
+        return (strike === 3)? alert('Success 3 strikes') : alert(`${strike}strike ${ball}ball`);
       }
-      return alert(`${strike}srike ${ball}ball`);
+    } else {
+      console.log('Fail');
     }
   }
 }
+
+
+// function compare(event) {    
+//   if(event.keyCode === 13) {
+//     let input = document.getElementById('num').value
+//     if(input.length !== 3) alert('input 3 numbers');  
+//     else {
+//       let strike = 0;
+//       let ball = 0;
+//       for(let i = 0; i < comArray.length; i++) {
+//         if(i == j && comArray[i] == input[j]) ++strike;
+//         else if(i != j && comArray[i] == input[j]) ++ball;      
+//       }
+//       return alert(`${strike}strike ${ball}ball`);
+//     }
+//   }
+// }
+
+
