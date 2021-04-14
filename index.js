@@ -5,10 +5,8 @@ function randomN() {
   while(comArray.length !== 3) {
     comArray.push(Math.floor(Math.random() * 10));
   }
-  document.getElementById('start').display = 'none';
-  // 버튼 체인
-  let num  = document.getElementById('num');
-  (num.style.display === 'none')? (num.style.display = 'block') : (num.style.display = 'none');
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('num').style.display = 'block';
 }
 
 // 게임시작 버튼을 눌렀을 때 랜덤한 수 생성 v2
@@ -27,9 +25,7 @@ let count = 0;
 function compare(event) {    
   if(event.keyCode === 13) {
     if(count < 10) {
-      let num = document.getElementById('num');
-      // num.style.display = 'none';
-      let input = num.value;
+      let input = document.getElementById('num').value;
       if(input.length !== 3) alert('input 3 numbers');  
       else {
         let strike = 0;
@@ -41,17 +37,24 @@ function compare(event) {
           }       
         }
         count++;
-        return (strike === 3)? alert('Success 3 strikes') : alert(`${strike}strike ${ball}ball`);
+        if(strike === 3) {
+          alert('Success 3 strikes');
+          document.getElementById('num').style.display = 'none';
+          document.getElementById('resume').style.display = 'block';
+        } else {
+          alert(`${input}\n${strike}strike ${ball}ball`);
+        }
       }
     } else {
-      alert('Fail try it again');
-      let resume = document.getElementById('resume');
-      (resume.style.display === 'none')? resume.style.display = box : resume.style.display = 'none';
+      alert(`${comArray}\nFail try it again`);
+      document.getElementById('num').style.display = 'none';
+      document.getElementById('resume').style.display = 'block';
     }
   }
 }
 
 function resume() {
+  document.getElementById('resume').style.display = 'none';
   count = 0;
   randomN();
 }
