@@ -54,7 +54,9 @@ function compare(event) {
 }
 
 function resume() {
-  document.getElementById('resume').style.display = 'none';
+  document.getElementById('resume').style.display = 'none'; 
   count = 0;
+  comArray = [];
   randomN();
 }
+
