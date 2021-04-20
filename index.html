@@ -25,11 +25,12 @@
 
       <!-- 야구게임 Start -->
       
-      <input type='button' id='button' onclick='randomN()' value='Game Start'></input>
+      <input type='button' id='start' onclick='randomN()' value='Game Start'></input>
       
-      <input type='number' id='num' size='3' placeholder='Input 3 numbers'></input>
+      <input type='text' id='num' size='13' onfocus="this.value=''" placeholder='Input 3 numbers'></input>
       
-      <!--<input type='button' id='button' name='Retry' onclick='?' value='Retry'></input>-->
+      <input type='button' id='resume' onclick='resume()' value='resume'></input>
+      
       <!-- 야구게임 End -->
     </section>
     <script src="index.js"></script>
